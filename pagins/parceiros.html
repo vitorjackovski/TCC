@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcerias</title>
+    <link rel="stylesheet" href="./parceiros.css">
+</head>
+<body>
+    <img  alt="parceiros imagem" class="parceiros-img" src="../../imgs/user-icon-on-transparent-background-free-png.webp">
+    
+    <hr class="linha1"></hr>
+    <hr class="linha"></hr>
+    <hr class="linha2"></hr>
+    <hr class="linha3"></hr>
+    <hr class="linha4"></hr>
+    <hr class="linha5"></hr>
+
+    <div class="container">
+      <form id="parceiroForm" autocomplete="off">
+        <input class="email" id="email" name="email" required placeholder="" />  
+        <label class="nome" for="email">Nome:</label>
+        
+        <input class="sobrenome1" id="sobrenome" name="sobrenome" required placeholder="" />  
+        <label class="sobrenome2" for="sobrenome">Sobrenome:</label>
+
+        <input class="endereço1" id="endereço" name="endereço" required placeholder="" />  
+        <label class="endereço2" for="endereço">endereço:</label>
+
+        <input class="CNPJ1" id="CNPJ" name="CNPJ" required placeholder="" />  
+        <label class="CNPJ2" for="CNPJ">CNPJ:</label>
+
+        <input class="contato1" id="contat" name="contat" required placeholder="" />  
+        <label class="contato2" for="contat"> Contato:</label>
+        
+        <button class="cadastro1" type="submit">Cadastrar</button>
+      </form>
+      <div class="cadastro2">Cadastrar Parceiros</div>
+    </div>
+
+    <script>
+      document.getElementById('parceiroForm').addEventListener('submit', function(event) {
+        const campos = ['email', 'sobrenome', 'endereço', 'CNPJ', 'contat'];
+        let valido = true;
+        campos.forEach(function(id) {
+          const campo = document.getElementById(id);
+          if (!campo.value.trim()) {
+            campo.style.border = '2px solid red';
+            valido = false;
+          } else {
+            campo.style.border = '';
+          }
+        });
+        if (!valido) {
+          event.preventDefault();
+          alert('Por favor, preencha todos os campos.');
+        }
+      });
+    </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Relatório - Meg Cop</title>
+    <link rel="stylesheet" href="relatorio.css"> <!-- Novo CSS baseado no cadastro.css -->
+  </head>
+  <body>
+    <div class="top-gradient"></div>
+    <div class="relatorio-container">
+      <div class="relatorio-content">
+        <nav>
+          <h1>Relatório</h1>
+          <div class="cadastro-benefits">
+            Gere relatórios personalizados<br>
+            <span>Selecione o período e tipo de movimentação para visualizar os dados.</span>
+          </div>
+          <form class="relatorio-form" id="form-relatorio">
+            <label for="data-inicio">Data de início:</label><br />
+            <input type="date" id="data-inicio" name="data-inicio" required /><br /><br />
+            <label for="data-fim">Data de fim:</label><br />
+            <input type="date" id="data-fim" name="data-fim" required /><br /><br />
+            <label for="tipo">Tipo de movimentação:</label><br />
+            <select id="tipo" name="tipo">
+              <option value="todos">Todos</option>
+              <option value="entrada">Entrada</option>
+              <option value="saida">Saída</option>
+              <option value="transferencia">Transferência</option>
+            </select><br /><br />
+            <button type="submit">Gerar Relatório</button>
+          </form>
+          <div class="login-prompt">
+            Voltar para <a href="./home.html">Home</a>
+          </div>
+          <button id="inicio-btn" class="inicio-btn" onclick="window.location.href='home.html'">Início</button>
+        </nav>
+      </div>
+      <div class="relatorio-tabela-container">
+        <table class="relatorio-tabela" id="tabela-relatorio">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Produto</th>
+              <th>Tipo</th>
+              <th>Quantidade</th>
+              <th>Responsável</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Linhas de relatório serão inseridas aqui -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <footer></footer>
+    <div class="footer-content">
+      <p>© 2025 MegCop. Todos os direitos reservados.</p>
+      <p>
+        Desenvolvido por
+        <a href="#" target="_blank">Bryan Jackovski, Luis Lunard, Eduardo Isaias e Vitor Jackovski</a>
+      </p>
+    </div>
+    <button id="toggle-theme" class="theme-toggle-btn">Alterar tema</button>
+    <script>
+      // Tema escuro/claro
+      const toggleButton = document.getElementById('toggle-theme');
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark');
+      }
+      toggleButton.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        if (document.body.classList.contains('dark')) {
+          localStorage.setItem('theme', 'dark');
+        } else {
+          localStorage.setItem('theme', 'light');
+        }
+      });
+      // Geração dinâmica do relatório (exemplo local)
+      document.getElementById('form-relatorio').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const inicio = document.getElementById('data-inicio').value;
+        const fim = document.getElementById('data-fim').value;
+        const tipo = document.getElementById('tipo').value;
+        // Exemplo de dados (substitua por fetch da API se necessário)
+        const dados = [
+          { data: '2025-06-15', produto: 'Caixa de Papelão', tipo: 'entrada', quantidade: 100, responsavel: 'João Silva' },
+          { data: '2025-06-16', produto: 'Envelope', tipo: 'saida', quantidade: 50, responsavel: 'Maria Souza' },
+          { data: '2025-06-17', produto: 'Caixa de Madeira', tipo: 'transferencia', quantidade: 30, responsavel: 'Carlos Lima' }
+        ];
+        const filtrados = dados.filter(item => {
+          const dentroPeriodo = (!inicio || item.data >= inicio) && (!fim || item.data <= fim);
+          const tipoOk = tipo === 'todos' || item.tipo === tipo;
+          return dentroPeriodo && tipoOk;
+        });
+        const tbody = document.querySelector('#tabela-relatorio tbody');
+        tbody.innerHTML = '';
+        if (filtrados.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="5">Nenhum dado encontrado para o filtro selecionado.</td></tr>';
+        } else {
+          filtrados.forEach(item => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td>${item.data}</td><td>${item.produto}</td><td>${item.tipo.charAt(0).toUpperCase() + item.tipo.slice(1)}</td><td>${item.quantidade}</td><td>${item.responsavel}</td>`;
+            tbody.appendChild(tr);
+          });
+        }
+      });
+    </script>
+    <script src="relatorio.js"></script>
+  </body>
+</html>

@@ -1,0 +1,151 @@
+/* relatorio.css - baseado em cadastro.css, sem imagens */
+
+.relatorio-container {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.relatorio-container h1 {
+  font-size: 2em;
+  margin-bottom: 16px;
+}
+
+.relatorio-form label {
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+.relatorio-form input,
+.relatorio-form select {
+  width: 100%;
+  padding: 8px;
+  margin: 6px 0 16px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.relatorio-form button {
+  width: 100%;
+  padding: 10px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1em;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.relatorio-form button:hover {
+  background: #0056b3;
+}
+
+.relatorio-tabela-container {
+  margin-top: 24px;
+  width: 100%;
+}
+
+.relatorio-tabela {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.relatorio-tabela th, .relatorio-tabela td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.relatorio-tabela th {
+  background: #f4f4f4;
+}
+
+.theme-toggle-btn {
+  position: fixed;
+  top: 24px;
+  right: 32px;
+  z-index: 1000;
+  padding: 10px 20px;
+  background: #ff914d;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.2s;
+}
+
+.theme-toggle-btn:hover {
+  background: #ff7e5f;
+}
+
+.inicio-btn {
+  position: fixed;
+  top: 24px;
+  left: 32px;
+  z-index: 1000;
+  padding: 10px 20px;
+  background: #ff914d;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.2s;
+}
+
+.inicio-btn:hover {
+  background: #ff7e5f;
+}
+
+body {
+  background: linear-gradient(200deg, #c19a00 0%, #b44500 100%);
+  color: #222;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  transition: background 0.3s, color 0.3s;
+}
+
+body.dark {
+  background: linear-gradient(200deg, #23272a 0%, #181a1b 100%);
+  color: #f1f1f1;
+}
+
+body.dark .relatorio-container {
+  background: #333;
+  color: #fff;
+}
+
+body.dark .relatorio-tabela th {
+  background: #222;
+}
+
+body.dark .theme-toggle-btn {
+  background: #ffde59;
+  color: #222;
+}
+
+body.dark .theme-toggle-btn:hover {
+  background: #ffe484;
+}
+
+body.dark .inicio-btn {
+  background: #ffde59;
+  color: #222;
+}
+
+body.dark .inicio-btn:hover {
+  background: #ffe484;
+}
